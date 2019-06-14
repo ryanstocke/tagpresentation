@@ -13,6 +13,27 @@
 </head>
 
 <body>
+  <script type="text/javascript">
+    var utag_data = {
+      page_name: "", // Contains a user-friendly name for the page.
+      page_section: "", // Contains a user-friendly page section, e.g. 'configuration section'.
+      page_category: "", // Contains a user-friendly page category, e.g. 'appliance page'.
+      page_subcategory: "", // Contains a user-friendly page subcategory, e.g. 'refrigerator page'.
+      page_type: "" // Contains a user-friendly page type, e.g. 'cart page'.
+    }
+  </script>
+
+  <!-- Loading script asynchronously -->
+  <script type="text/javascript">
+      (function (a, b, c, d) {
+        a = '//tags.tiqcdn.com/utag/services-presentations/ryan-stocke/qa/utag.js';
+        b = document; c = 'script'; d = b.createElement(c); d.src = a; d.type = 'text/java' + c; d.async = true;
+        a = b.getElementsByTagName(c)[0]; a.parentNode.insertBefore(d, a);
+      })();
+  </script>
+
+
+
 
   <div class="container">
     <div class="jumbotron">
@@ -34,7 +55,8 @@
             <input type="text" id="character-search" class="form-control">
             <br>
             <div class="text-right">
-              <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="fa fa-search"></span> Search
+              <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="fa fa-search"></span>
+                Search
                 A Dog!</button>
 
             </div>
@@ -50,7 +72,7 @@
             <div id="stats">
               <h3><strong>Breed:</strong> <span id="role">French Bulldog</span></h3>
               <h3><strong>Age:</strong> <span id="age">2</span></h3>
-              <h3><strong>Wagging Power</strong> <span id="force-points">10</span></h3>
+              <h3><strong>Wagging Power</strong> <span id="waggingPower">10</span></h3>
             </div>
           </div>
         </div>
@@ -59,24 +81,24 @@
   </div>
 
   <script type="text/javascript">
-    $("#search-btn").on("click", function() {
+    $("#search-btn").on("click", function () {
       var searchedCharacter = $("#character-search").val().trim();
 
       // Using a RegEx Pattern to remove spaces from searchedCharacter
       // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
       searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
 
-      $.get("/api/characters/" + searchedCharacter, function(data) {
+      $.get("/api/characters/" + searchedCharacter, function (data) {
         console.log(data);
         if (data) {
           $("#stats").show();
           $("#name").text(data.name);
           $("#role").text(data.role);
           $("#age").text(data.age);
-          $("#force-points").text(data.forcePoints);
+          $("#waggingPower").text(data.waggingPower);
         }
         else {
-          $("#name").text("The force is not strong with this one. Your character was not found.");
+          $("#name").text("The wagging power is not strong with this dog. Your dog was not found.");
           $("#stats").hide();
         }
       });

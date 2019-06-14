@@ -13,6 +13,25 @@
 </head>
 
 <body>
+  <script type="text/javascript">
+    var utag_data = {
+      page_name: "", // Contains a user-friendly name for the page.
+      page_section: "", // Contains a user-friendly page section, e.g. 'configuration section'.
+      page_category: "", // Contains a user-friendly page category, e.g. 'appliance page'.
+      page_subcategory: "", // Contains a user-friendly page subcategory, e.g. 'refrigerator page'.
+      page_type: "" // Contains a user-friendly page type, e.g. 'cart page'.
+    }
+  </script>
+
+  <!-- Loading script asynchronously -->
+  <script type="text/javascript">
+      (function (a, b, c, d) {
+        a = '//tags.tiqcdn.com/utag/services-presentations/ryan-stocke/qa/utag.js';
+        b = document; c = 'script'; d = b.createElement(c); d.src = a; d.type = 'text/java' + c; d.async = true;
+        a = b.getElementsByTagName(c)[0]; a.parentNode.insertBefore(d, a);
+      })();
+  </script>
+
 
   <div class="container">
     <div class="jumbotron">
@@ -55,8 +74,8 @@
               </div>
 
               <div class="form-group">
-                <label for="force-points">Wagging Power</label>
-                <input type="text" class="form-control" id="force-points">
+                <label for="waggingPower">Wagging Power</label>
+                <input type="text" class="form-control" id="waggingPower">
               </div>
 
             </form>
@@ -74,21 +93,21 @@
 
   <script type="text/javascript">
     // Question: What does this code do?
-    $("#add-btn").on("click", function(event) {
+    $("#add-btn").on("click", function (event) {
       event.preventDefault();
 
       var newCharacter = {
         name: $("#name").val().trim(),
         role: $("#role").val().trim(),
         age: $("#age").val().trim(),
-        forcePoints: $("#force-points").val().trim()
+        waggingPower: $("#waggingPower").val().trim()
       };
 
       // Question: What does this code do??
       $.post("/api/characters", newCharacter)
-        .then(function(data) {
+        .then(function (data) {
           console.log(data);
-          alert("Adding character...");
+          alert("Adding your dog to the dog log...");
         });
 
     });

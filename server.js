@@ -12,22 +12,22 @@ var PORT = process.env.PORT || 80;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Star Wars Characters (DATA)
+// Dogs (DATA)
 // =============================================================
 var characters = [
   {
-    routeName: "yoda",
+    routeName: "max",
     name: "Max",
     role: "French Bulldog",
     age: 2,
-    forcePoints: 10
+    waggingPower: 10
   },
   {
-    routeName: "darthmaul",
+    routeName: "blue",
     name: "Blue",
     role: "Golden Mix",
     age: 1,
-    forcePoints: 100
+    waggingPower: 100
   }
 ];
 
